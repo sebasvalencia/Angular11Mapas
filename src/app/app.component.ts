@@ -15,6 +15,8 @@ export class AppComponent {
   // datos por defecto - frisby de la 70
   lat = 6.246062;
   lng = -75.589227;
+  marcadorSel: any = null;
+  draggable = true;
 
   constructor(public _ms: MapasService) {
     this._ms.cargarMarcadores();
@@ -35,12 +37,13 @@ export class AppComponent {
 
   clickMarcador(marcador: Marcador, i: number) {
     console.log(marcador, i);
+    this.marcadorSel = marcador;
   }
 
   dragEnd(marcador: Marcador, evento) {
     console.log(marcador, evento);
-    let lat = evento.coords.lat;
-    let lng = evento.coords.lng;
+    const lat = evento.coords.lat;
+    const lng = evento.coords.lng;
     marcador.lat = lat;
     marcador.lng = lng;
     this._ms.guardarMarcadores();

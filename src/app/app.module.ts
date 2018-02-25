@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,7 +20,8 @@ import { MapasService } from './services/mapas.service';
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBxZehORitBMJcVL6H_0V4RLG8EytWeDt4'
-    })
+    }),
+    FormsModule
   ],
   providers: [
     MapasService
