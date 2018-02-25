@@ -13,12 +13,23 @@ export class MapasService {
       lng: -75.589227,
       titulo: 'Frisby',
       draggable: true
-    }
+    };
     this.marcadores.push(nuevoMarcador);
   }
 
   insertarMarcador(marcador: Marcador) {
     this.marcadores.push(marcador);
+    this.guardarMarcadores();
+  }
+
+  guardarMarcadores() {
+    localStorage.setItem('marcadores', JSON.stringify(this.marcadores));
+  }
+
+  cargarMarcadores() {
+    if (localStorage.getItem('marcadores')) {
+      this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
+    }
   }
 
 }

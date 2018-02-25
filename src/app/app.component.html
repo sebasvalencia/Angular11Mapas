@@ -12,8 +12,11 @@
             <!-- the component as the initial center of the map: -->
             <!-- <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng"> -->
             <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="clickMapa( $event )" >
-                <agm-marker *ngFor="let marcador of _ms.marcadores"
-                        [latitude]="marcador.lat" [longitude]="marcador.lng" [markerDraggable]="marcador.draggable">
+                <agm-marker *ngFor="let marcador of _ms.marcadores; let i = index"
+                        [latitude]="marcador.lat" [longitude]="marcador.lng" 
+                        [markerDraggable]="marcador.draggable" 
+                        (markerClick)="clickMarcador( marcador, i)" 
+                        (dragEnd)="dragEnd( marcador, $event )">
                     <agm-info-window> 
                         <strong>{{ marcador.titulo }}</strong>                       
                         <p *ngIf="marcador.desc">Este es Frisby</p>
