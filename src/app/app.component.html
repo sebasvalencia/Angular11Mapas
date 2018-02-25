@@ -5,7 +5,15 @@
     <div class="row">
         <div class="col-md-4">
 
-            <div *ngIf="marcadorSel">
+            <div *ngIf="!marcadorSel">
+                {{ !marcadorSel }}
+                <div class="alert alert-info" role="alert">
+                    <strong>Haga click</strong>
+                    en el mapa, para crear un marcador o seleccione uno
+                </div>
+            </div>
+
+            <div *ngIf="marcadorSel" class="animated fadeIn fast">
                 <h5>Marcador</h5>
                 <hr>
                 <div class="form-group">
@@ -41,7 +49,7 @@
                     <agm-info-window>
                         <strong>{{ marcador.titulo }}</strong>
                         <p *ngIf="marcador.desc">Este es Frisby</p>
-                        <p><a class="text-danger puntero" (click)="_ms.borrarMarcador(i)">Borrar marcador</a></p>
+                        <p><a class="text-danger puntero" (click)="_ms.borrarMarcador(i); marcadorSel=null;">Borrar marcador</a></p>
                     </agm-info-window>
                 </agm-marker>
 

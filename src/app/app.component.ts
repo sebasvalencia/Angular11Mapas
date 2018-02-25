@@ -20,6 +20,7 @@ export class AppComponent {
 
   constructor(public _ms: MapasService) {
     this._ms.cargarMarcadores();
+    console.log(this.marcadorSel);
   }
 
   clickMapa(evento) {
